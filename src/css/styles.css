@@ -1909,12 +1909,12 @@ a:hover {
   }
   
   .front {
-    background: url('../images/logosio.png') no-repeat center;
+    background: url('../https://eia.imfast.io/logosio.png') no-repeat center;
     z-index: 2; 
   }    
   
   .back {
-    background: url('../images/logosio.png') no-repeat center; 
+    background: url('../https://eia.imfast.io/logosio.png') no-repeat center; 
     -ms-transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
