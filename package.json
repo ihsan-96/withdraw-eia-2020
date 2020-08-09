@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ihsan-96/withdraw-eia-2020#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "html": "^1.0.0"
+    "html": "^1.0.0",
+    "node-persist": "^3.1.0"
   }
 }
