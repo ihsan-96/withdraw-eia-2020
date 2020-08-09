@@ -20,12 +20,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/count', (req, res) => {
-  client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, result) => {
     if (err) console.log('pg_count_err', err);
     // for (let row of res.rows) {
     //   console.log(JSON.stringify(row));
     // }
-    res.json({count: res && res.rows});
+    res.json({count: result && result.rows});
   });
 })
 
