@@ -169,6 +169,10 @@
       Concerned Citizen of India`;
 
       var synonyms = {
+        'Concerned' : [
+          'Concerned',
+          'A'
+        ],
         'Save our Earth!' : [
           'Save our Earth!',
           'The Earth is What We Have in Common',
@@ -258,7 +262,7 @@
       let body = await fetch('https://withdraw-eia-2020.herokuapp.com/count')
       body = await body.json()
       if (body.count) {
-        document.getElementById('footfall').innerHTML = `Total visits here : ${body.count}`
+        document.getElementById('footfall').innerHTML = `Total forms submitted here : ${body.count}`
       }
     }
 
