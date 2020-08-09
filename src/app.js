@@ -16,7 +16,10 @@ const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
-  // increment in pg
+  
+  client.query('UPDATE counter SET count = count + 1 WHERE id = 1;', (err, result) => {
+    if (err) console.log('pg_incr_err', err);
+  });
 })
 
 // app.get('/create_table', (req, res) => {
@@ -42,7 +45,7 @@ app.get('/', (req, res) => {
 app.get('/count', (req, res) => {
   client.query('SELECT count from counter where id = 1;', (err, result) => {
     if (err) console.log('pg_count_err', err);
-    res.json({count: result});
+    res.json({count: result && result.rows && result.rows.length && result.rows[0] && result.rows[0].count});
   });
 })
 
