@@ -139,11 +139,6 @@
       var mailLink = document.createElement('a');
       var recipients = "eia2020-moefcc@gov.in";
       var subject = "Withdraw EIA Draft 2020";
-      var quotes = [
-        'The Earth is What We Have in Common',
-        'We won’t have a society if we destroy the environment.',
-        'Earth provides enough to satisfy every man’s needs, but not every man’s greed.'
-      ];
       var body = `
       Hi Sir/Madam,
 
@@ -167,11 +162,66 @@
 
       In short, all these new norms give free and easy access to industries to damage our already affected environment, threatened forests and wildlife and takes away the rights of the vulnerable communities, forests or wildlife affected by them. In the wake of this pandemic, we should be more thoughtful and considerate about our environment.
 
-      ${quotes[Math.floor(Math.random() * (quotes.length -1))]}
+      Save our Earth!
 
       Sincerely,
       ${name}
       Concerned Citizen of India`;
+
+      var synonyms = {
+        'Save our Earth!' : [
+          'Save our Earth!',
+          'The Earth is What We Have in Common',
+          'We won’t have a society if we destroy the environment.',
+          'Earth provides enough to satisfy every man’s needs, but not every man’s greed.'
+        ],
+        'This mail is regarding' : [
+          'This mail is regarding',
+          'This is about'
+        ],
+        'March 2020' : [
+          'March 2020',
+          'Mar \'20'
+        ],
+        '2006 EIA' : [
+          '2006 EIA',
+          'EIA 2006'
+        ],
+        'After project commencement' : [
+          'after project commencement',
+          'After starting the project'
+        ],
+        'unmonitored' : [
+          'unmonitored',
+          'uncontrolled',
+          'massive'
+        ],
+        'huge' : [
+          'big',
+          'huge'
+        ],
+        'the residents' : [
+          'the residents',
+          'people living in the area',
+          'the residing communities',
+          'the native communities'
+        ],
+        'Softened regulations' : [
+          'Softened regulations',
+          'Relaxed guidlines',
+          'Unfit regulations'
+        ],
+        'more languages' : [
+          'more languages',
+          'regional languages'
+        ]
+      };
+
+      for (var phrase in synonyms) {
+        var subs = synonyms[phrase]
+        var sub = Math.floor((Math.random() * subs.length))
+        body = body.replace(phrase, subs[sub])
+      }
 
       mailLink.href = "mailto:"+recipients+"?subject="+subject+"&body="+body.replace(/\n/g,"<br>");
       mailLink.click();

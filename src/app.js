@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/count', (req, res) => {
-  console.log('hello from server')
   res.json({count: COUNTER + 573});
 })
 
