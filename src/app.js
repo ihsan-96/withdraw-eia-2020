@@ -19,37 +19,30 @@ app.get('/', (req, res) => {
   // increment in pg
 })
 
-app.get('/create_table', (req, res) => {
-  client.query('CREATE TABLE counter (id int PRIMARY KEY, count int NOT NULL);', (err, result) => {
-    if (err || !result) {
-      res.json({
-        error : err || !result
-      })
-    } else {
-      res.json({result})
-    }
-  })
-})
-
-app.get('/init', (req, res) => {
-  client.query('INSERT INTO counter (id, count) VALUES (1, 574);', (err, result) => {
-    if (err || !result) {
-      res.json({
-        error : err || !result
-      })
-    } else {
-      res.json({result})
-    }
-  })
-})
+// app.get('/create_table', (req, res) => {
+//   client.query('CREATE TABLE counter (id int PRIMARY KEY, count int NOT NULL);', (err, result) => {
+//     if (err || !result) {
+//       res.json({
+//         error : err || !result
+//       })
+//     } else {
+//       client.query('INSERT INTO counter (id, count) VALUES (1, 574);', (err, result) => {
+//         if (err || !result) {
+//           res.json({
+//             error : err || !result
+//           })
+//         } else {
+//           res.json({result})
+//         }
+//       })
+//     }
+//   })
+// })
 
 app.get('/count', (req, res) => {
-  client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, result) => {
+  client.query('SELECT count from counter where id = 1;', (err, result) => {
     if (err) console.log('pg_count_err', err);
-    // for (let row of res.rows) {
-    //   console.log(JSON.stringify(row));
-    // }
-    res.json({count: result && result.rows});
+    res.json({count: result});
   });
 })
 
