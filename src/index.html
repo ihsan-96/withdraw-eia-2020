@@ -53,9 +53,10 @@
       </h2>
       <button class="button modal-toggle">Raise your voice</button>
     </div>
-
+    
+    
     <footer class="footer">
-      <p>&copy; SIO Kochi Area</p>
+      <p id="footfall"></p>
       <a href="https://www.facebook.com/kochi.city.sio">
         <img src="https://eia.imfast.io/fb.png" width="15px" height="15px">
       </a>
@@ -65,6 +66,7 @@
       <a href="https://www.youtube.com/channel/UCTb4bxI_Z39JXXekFIH8lIQ">
         <img src="https://eia.imfast.io/yt.png" width="15px" height="15px">
       </a>
+      <p>&copy; SIO Kochi Area</p>
     </footer>
   </div>
   
@@ -74,7 +76,6 @@
   crossorigin="anonymous"></script>
 <script src="https://eia.imfast.io/scripts.min.js"></script>
 <script>
-
 
   // Close modal on escape key
   $(document).keyup(function(e) {
@@ -138,11 +139,6 @@
       var mailLink = document.createElement('a');
       var recipients = "eia2020-moefcc@gov.in";
       var subject = "Withdraw EIA Draft 2020";
-      var quotes = [
-        'The Earth is What We Have in Common',
-        'We won’t have a society if we destroy the environment.',
-        'Earth provides enough to satisfy every man’s needs, but not every man’s greed.'
-      ];
       var body = `
       Hi Sir/Madam,
 
@@ -162,13 +158,75 @@
 
         \t6. Softened regulations: softened regulations like reducing the frequency of compliance reports and allowing industries to prepare reports themselves will allow industries to exploit the environment.
 
+        \t7. Draft publishing: Draft should be publised in more languages, and should accept public comments in regional languages as well.
+
       In short, all these new norms give free and easy access to industries to damage our already affected environment, threatened forests and wildlife and takes away the rights of the vulnerable communities, forests or wildlife affected by them. In the wake of this pandemic, we should be more thoughtful and considerate about our environment.
 
-      ${quotes[Math.floor(Math.random() * (quotes.length -1))]}
+      Save our Earth!
 
       Sincerely,
       ${name}
       Concerned Citizen of India`;
+
+      var synonyms = {
+        'Concerned' : [
+          'Concerned',
+          'A'
+        ],
+        'Save our Earth!' : [
+          'Save our Earth!',
+          'The Earth is What We Have in Common',
+          'We won’t have a society if we destroy the environment.',
+          'Earth provides enough to satisfy every man’s needs, but not every man’s greed.'
+        ],
+        'This mail is regarding' : [
+          'This mail is regarding',
+          'This is about'
+        ],
+        'March 2020' : [
+          'March 2020',
+          'Mar \'20'
+        ],
+        '2006 EIA' : [
+          '2006 EIA',
+          'EIA 2006'
+        ],
+        'After project commencement' : [
+          'after project commencement',
+          'After starting the project'
+        ],
+        'unmonitored' : [
+          'unmonitored',
+          'uncontrolled',
+          'massive'
+        ],
+        'huge' : [
+          'big',
+          'huge'
+        ],
+        'the residents' : [
+          'the residents',
+          'people living in the area',
+          'the residing communities',
+          'the native communities'
+        ],
+        'Softened regulations' : [
+          'Softened regulations',
+          'Relaxed guidlines',
+          'Unfit regulations'
+        ],
+        'more languages' : [
+          'more languages',
+          'regional languages'
+        ]
+      };
+
+      for (var phrase in synonyms) {
+        var subs = synonyms[phrase]
+        var sub = Math.floor((Math.random() * subs.length))
+        body = body.replace(phrase, subs[sub])
+      }
+
       mailLink.href = "mailto:"+recipients+"?subject="+subject+"&body="+body.replace(/\n/g,"<br>");
       mailLink.click();
     }
@@ -185,6 +243,7 @@
       } else {
         $('.first-name').text("Sorry " + firstName + ", the time to respond is over!");
       }
+      fetch('https://withdraw-eia-2020.herokuapp.com/count_incr')
     });
 
     // Feather icons
@@ -198,6 +257,16 @@
       reset: false,
       opacity: 0
     });
+
+    async function updateCount() {
+      let body = await fetch('https://withdraw-eia-2020.herokuapp.com/count')
+      body = await body.json()
+      if (body.count) {
+        document.getElementById('footfall').innerHTML = `Total forms submitted here : ${body.count}`
+      }
+    }
+
+    updateCount().then(()=>{})
 
   });
 </script>
