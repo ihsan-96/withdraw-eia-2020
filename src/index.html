@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>SIO Kochi Area | WithdrawEIA2020</title>
+  <meta name="title" content="WithdrawEIA2020">
+  <meta name="author" content="Ameen Ahsan">
+  <link href="images/favicon.ico" rel="shortcut icon">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="modal">
+    <button type="button" class="modal-close modal-toggle"><i class="icon" data-feather="x"></i><span class="hide-mobile">ESC</span></button>
+    <div class="modal-content">
+      <div class="success">
+        <a href="index.html" class="logo"><img src="images/logosio.png" alt="logo"/></a>
+        <h2 class="modal-title first-name" id="title-name"></h2>
+        <p>Opening Email Content..</p>
+        <a href="index.html" class="button">Back home</a>
+      </div>
+      <div class="form-content">
+        <a href="index.html" class="logo"><img src="images/logosio.png" alt="logo"/></a>
+
+        <h2 class="modal-title">Raise your voice against EIA Draft 2020</h2>
+        <p class="modal-subtitle">This will open your mail app with the content to send. Please try to make some changes from your side as well.</p>
+        <form class='form' name='mailForm' method='POST'><input type='hidden' name='form-name' value='mailForm' />
+          <div class="group">
+            <input type="text" id="firstName" name="first-name" placeholder="&nbsp;" autocomplete="off" required>
+            <label for="first-name">First name</label>
+            <span class="border"></span>
+          </div>
+          <button type="submit" class="button">Send Email</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <a href="index.html" class="logo"><img src="images/logosio.png" alt="logo"/></a>
+
+    <div class="hero">
+      <h2 class="title">Withdraw EIA Draft 2020</h2>
+      <h2 class="title shift clip">
+        <span class="word-shift">
+          <b class="is-visible">#NowOrNever</b>
+          <b>#EIAdraft2020</b>
+          <b>#CareForEarth</b>
+        </span>
+      </h2>
+      <button class="button modal-toggle">Raise your voice</button>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; SIO Kochi Area</p>
+      <a href="https://www.facebook.com/kochi.city.sio">
+        <img src="images/fb.png" width="15px" height="15px">
+      </a>
+      <a href="https://www.instagram.com/siokochicity">
+        <img src="images/insta.png" width="15px" height="15px">
+      </a>
+      <a href="https://www.youtube.com/channel/UCTb4bxI_Z39JXXekFIH8lIQ">
+        <img src="images/yt.png" width="15px" height="15px">
+      </a>
+    </footer>
+  </div>
+  
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  crossorigin="anonymous"></script>
+<script src="js/scripts.min.js"></script>
+<script>
+
+
+  // Close modal on escape key
+  $(document).keyup(function(e) {
+    if (e.key === "Escape") {
+      $('.modal').removeClass('modal-show');
+      $('.content').removeClass('content-blurred');
+      $('body').removeClass('no-scroll');
+    }
+  });
+
+  $(function(){
+
+    // Provider card slider
+    $('.slider').flickity({
+      pauseAutoPlayOnHover: false,
+      prevNextButtons: false,
+      cellAlign: 'center',
+      draggable:  false,
+      freeScroll: false,
+      wrapAround: true,
+      pageDots: false,
+      autoPlay: 3000,
+    });
+
+    // Imbox zero slider
+    $('.zero-slider').flickity({
+      pauseAutoPlayOnHover: false,
+      prevNextButtons: false,
+      cellAlign: 'center',
+      freeScroll: false,
+      wrapAround: false,
+      draggable: false,
+      pageDots: false,
+      autoPlay: 3000,
+      fade: true,
+    });
+
+    // Open & close modal
+    $('.modal-toggle').click(function(){
+      $('.modal').toggleClass('modal-show');
+      $('.content').toggleClass('content-blurred');
+      $('body').toggleClass('no-scroll');
+    });
+
+    // Reserve username form
+    $(".form").submit(function(e) {
+      e.preventDefault();
+      var $form = $(this);
+      if($form.attr("action")) {
+        $.post($form.attr("action"), $form.serialize()).then(function() {
+          $('.form-content').addClass('form-content-hide');
+          $('.success').addClass('success-show');
+        });
+      } else {
+        $('.form-content').addClass('form-content-hide');
+        $('.success').addClass('success-show');
+      }
+    });
+
+    function openMail(name) {
+      var mailLink = document.createElement('a');
+      var recipients = "eia2020-moefcc@gov.in";
+      var subject = "Withdraw EIA Draft 2020";
+      var quotes = [
+        'The Earth is What We Have in Common',
+        'We won’t have a society if we destroy the environment.',
+        'Earth provides enough to satisfy every man’s needs, but not every man’s greed.'
+      ];
+      var body = `This mail is regarding the draft notification proposed in March 2020, to replace the 2006 EIA.
+      Since the notification is at the stage of public comments, I would like to share my concerns over it.
+        \t1. EIA clearance After project commencement: This will allow unmonitored destruction of the environment and will pose a huge threat to the residents.
+        \t2. No public participation for dams, mining and highway expansion: This will take away the chance for any grievance redressal. It takes away the rights of vulnerable communities.
+        \t3. Fines for violations: Levying small fines will encourage the industries to ignore the guidelines.
+        \t4. Clearance exemption: This clause will weaken the restrictions and let the violations go unreported.
+        \t5. Public consultation period: It should not be reduced as it will nullify the effectiveness of the public audit. Instead, focus on reducing the delay in granting environmental clearance.
+        \t6. Softened regulations: softened regulations like reducing the frequency of compliance reports and allowing industries to prepare reports themselves will allow industries to exploit the environment.
+
+      In short, all these new norms give free and easy access to industries to damage our already affected environment, threatened forests and wildlife and takes away the rights of the vulnerable communities, forests or wildlife affected by them. In the wake of this pandemic, we should be more thoughtful and considerate about our environment.
+      ${quotes[Math.floor(Math.random * (quotes.length -1))]}
+
+      Sincerely,
+      ${name}
+      Concerned Citizen of India`;
+      mailLink.href = "mailto:"+recipients+"?subject="+subject+"&body="+body.replace(/\n/g,"<br>");
+      mailLink.click();
+    }
+
+    // Save user's first name
+    $(".form").submit(function(e) {
+      e.preventDefault();
+      var firstName = $("#firstName").val();
+      if (new Date() < new Date('2020-08-12')) {
+        $('.first-name').text("Thank you," + " " + firstName + "!");
+        setTimeout(function() {
+          openMail(firstName);
+        }, 1000);
+      } else {
+        $('.first-name').text("Sorry " + firstName + ", the time to respond is over!");
+      }
+    });
+
+    // Feather icons
+    feather.replace()
+
+    // ScrollReveal
+    ScrollReveal().reveal('.hero, .title, .screen, .features, .cards, .zero-slider', {
+      distance: '40px',
+      duration: 2000,
+      mobile: false,
+      reset: false,
+      opacity: 0
+    });
+
+  });
+</script>
+
+
+</body>
+
+</html>
