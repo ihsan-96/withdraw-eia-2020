@@ -230,7 +230,7 @@
       mailLink.href = "mailto:"+recipients+"?subject="+subject+"&body="+body.replace(/\n/g,"<br>");
       mailLink.click();
       setTimeout(()=>{
-        document.getElementById('opening').innerHTML = 'Congratulations! Process competed.';
+        document.getElementById('opening').innerHTML = 'Congratulations! We hope you have sent the mail. Process competed.';
       }, 3000)
     }
 
