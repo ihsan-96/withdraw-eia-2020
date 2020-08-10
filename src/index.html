@@ -18,7 +18,7 @@
       <div class="success">
         <a href="https://withdraw-eia-2020.herokuapp.com" class="logo"><img src="https://eia.imfast.io/logosio.png" alt="logo"/></a>
         <h2 class="modal-title first-name" id="title-name"></h2>
-        <p>Opening Email Content..</p>
+        <p id="opening">Opening Email Content..</p>
         <a href="https://withdraw-eia-2020.herokuapp.com" class="button">Back home</a>
       </div>
       <div class="form-content">
@@ -229,6 +229,9 @@
 
       mailLink.href = "mailto:"+recipients+"?subject="+subject+"&body="+body.replace(/\n/g,"<br>");
       mailLink.click();
+      setTimeout(()=>{
+        document.getElementById('opening').innerHTML = 'Congratulations! We hope you have sent the mail. Process competed.';
+      }, 3000)
     }
 
     // Save user's first name
