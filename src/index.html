@@ -20,6 +20,8 @@
         <h2 class="modal-title first-name" id="title-name"></h2>
         <p id="opening">Opening Email Content..</p>
         <a href="https://withdraw-eia-2020.herokuapp.com" class="button">Back home</a>
+        <a href="https://withdraw-eia-2020.herokuapp.com/tweet" class="button">Tweet against EIA</a>
+        <a href="https://www.change.org/p/pmo-moefcc-withdraw-draft-eia-2020-8a39a172-e9be-4a5a-94c2-c18cd5c0a0ea" class="button">Sign Petition in change.org</a>
       </div>
       <div class="form-content">
         <a href="https://withdraw-eia-2020.herokuapp.com" class="logo"><img src="https://eia.imfast.io/logosio.png" alt="logo"/></a>
@@ -30,6 +32,10 @@
           <div class="group">
             <input type="text" id="firstName" name="first-name" placeholder="&nbsp;" autocomplete="off" required>
             <label for="first-name">Full Name</label>
+            <span class="border"></span>
+          </div>
+          <div class="group">
+            <textarea id="messageText" name="message-text" cols="40" rows="5" placeholder="Add a short message from your side as well (Optional)" autocomplete="off"></textarea>
             <span class="border"></span>
           </div>
           <button type="submit" class="button">Send Email</button>
@@ -135,9 +141,10 @@
       }
     });
 
-    function openMail(name) {
+    function openMail(name, customMessage) {
       var mailLink = document.createElement('a');
-      var recipients = "secy-moef@nic.in";
+      var recipients = "eia2020-moefcc@gov.in";
+      var cc = Math.random() > 0.6 ? "connect@mygov.nic.in" : "secy-moef@nic.in";
       var subject = "Withdraw EIA Draft 2020";
       var body = `
       Hi Sir/Madam,
@@ -161,6 +168,8 @@
         \t7. Draft publishing: Draft should be publised in more languages, and should accept public comments in regional languages as well.
 
       In short, all these new norms give free and easy access to industries to damage our already affected environment, threatened forests and wildlife and takes away the rights of the vulnerable communities, forests or wildlife affected by them. In the wake of this pandemic, we should be more thoughtful and considerate about our environment.
+
+      ${customMessage}
 
       Save our Earth!
 
@@ -227,7 +236,7 @@
         body = body.replace(phrase, subs[sub])
       }
 
-      mailLink.href = "mailto:"+recipients+"?subject="+subject+"&body="+body.replace(/\n/g,"<br>");
+      mailLink.href = "mailto:"+recipients+"?cc="+cc+"&subject="+subject+"&body="+body.replace(/\n/g,"<br>");
       mailLink.click();
       setTimeout(()=>{
         document.getElementById('opening').innerHTML = 'Congratulations! We hope you have sent the mail. Process competed.';
@@ -238,10 +247,11 @@
     $(".form").submit(function(e) {
       e.preventDefault();
       var firstName = $("#firstName").val();
+      var customMessage = $("#messageText").val();
       if (new Date() < new Date('2020-08-12')) {
         $('.first-name').text("Thank you," + " " + firstName + "!");
         setTimeout(function() {
-          openMail(firstName);
+          openMail(firstName, customMessage);
         }, 1000);
       } else {
         $('.first-name').text("Sorry " + firstName + ", the time to respond is over!");

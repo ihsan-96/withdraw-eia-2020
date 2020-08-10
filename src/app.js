@@ -14,8 +14,21 @@ client.connect();
 const app = express()
 const port = process.env.PORT || 3000
 
+const tweets = [
+  'https://ctt.ac/ove5r',
+  'https://ctt.ac/N94du',
+  'https://ctt.ac/17qn8',
+  'https://ctt.ac/e2q7f',
+  'https://ctt.ac/BD7S0'
+]
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
+})
+
+app.get('/tweet', (req, res) => {
+  const tweet = tweets[Math.floor(Math.random() * tweets.length)]
+  res.redirect(tweet)
 })
 
 // app.get('/create_table', (req, res) => {
