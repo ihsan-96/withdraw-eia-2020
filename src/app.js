@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
 })
 
+app.get('/malayalam', (req, res) => {
+  res.sendFile(__dirname + '/indexMalayalam.html')
+})
+
 app.get('/tweet', (req, res) => {
   const tweet = tweets[Math.floor(Math.random() * tweets.length)]
   res.redirect(tweet)

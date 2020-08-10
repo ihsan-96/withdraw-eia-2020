@@ -19,25 +19,25 @@
         <a href="https://withdraw-eia-2020.herokuapp.com" class="logo"><img src="https://eia.imfast.io/logosio.png" alt="logo"/></a>
         <h2 class="modal-title first-name" id="title-name"></h2>
         <p id="opening">Opening Email Content..</p>
-        <a href="https://withdraw-eia-2020.herokuapp.com" class="button">Back home</a>
-        <a href="https://withdraw-eia-2020.herokuapp.com/tweet" class="button">Tweet against EIA</a>
-        <a href="https://www.change.org/p/pmo-moefcc-withdraw-draft-eia-2020-8a39a172-e9be-4a5a-94c2-c18cd5c0a0ea" class="button">Sign Petition in change.org</a>
+        <a href="https://withdraw-eia-2020.herokuapp.com" class="button">ഹോം</a>
+        <a href="https://withdraw-eia-2020.herokuapp.com/tweet" class="button">ട്വീറ്റ് ചെയ്യാം</a>
+        <a href="https://www.change.org/p/pmo-moefcc-withdraw-draft-eia-2020-8a39a172-e9be-4a5a-94c2-c18cd5c0a0ea" class="button">ചേഞ്ച്.കോം  ഇൽ പരാതി സമർപ്പിക്കാം</a>
       </div>
       <div class="form-content">
         <a href="https://withdraw-eia-2020.herokuapp.com" class="logo"><img src="https://eia.imfast.io/logosio.png" alt="logo"/></a>
 
-        <h2 class="modal-title">Raise your voice against EIA Draft 2020</h2>
-        <p class="modal-subtitle">Send the mail after it is opened.</p>
+        <h2 class="modal-title">EIA 2020 കരടിനെതിരെ നമുക്ക് പ്രതികരിക്കാം</h2>
+        <p class="modal-subtitle">ഇമെയിൽ തുറന്ന് വന്നതിനു ശേഷം അത് അയക്കാൻ ഉള്ള ബട്ടൺ അമർത്തുക.</p>
         <form class='form' name='mailForm' method='POST'><input type='hidden' name='form-name' value='mailForm' />
           <div class="group">
             <input type="text" id="firstName" name="first-name" placeholder="&nbsp;" autocomplete="off" required>
-            <label for="first-name">Full Name</label>
-            <span class="border"></span>  
+            <label for="first-name">താങ്കളുടെ പേര്</label>
+            <span class="border"></span>
           </div>
           <div class="group">
-            <!-- <textarea id="messageText" name="message-text" cols="40" rows="5" placeholder="Add one line from your side as well (Optional, this avoids rejection). The rest will be automatically added." autocomplete="off"></textarea> -->
-            <input type="text" id="messageText" name="message-text" placeholder="&nbsp;" autocomplete="off" required>
-            <label for="first-name">Add one line for you</label>
+            <textarea id="messageText" name="message-text" cols="40" rows="5" placeholder="താങ്കൾക്ക് പറയാനുള്ളത് ഒരു വരിയിൽ ഇവിടെ അറിയിക്കാം. ബാക്കിയുള്ള വിവരങ്ങൾ തനിയെ ചേർക്കപ്പെടുന്നതാണ്." autocomplete="off"></textarea>
+            <!-- <input type="text" id="messageText" name="message-text" placeholder="&nbsp;" autocomplete="off" required>
+            <label for="first-name">താങ്കൾക്ക് പറയാനുള്ളത് ഒരു വരിയിൽ ചുവടെ ചേർക്കാം. ബാക്കിയുള്ള വിവരങ്ങൾ തനിയെ ചേർക്കപ്പെടുന്നതാണ്.</label> -->
             <span class="border"></span>
           </div>
           <button type="submit" class="button">Send Email</button>
@@ -50,7 +50,7 @@
     <a href="https://withdraw-eia-2020.herokuapp.com" class="logo"><img src="https://eia.imfast.io/logosio.png" alt="logo"/></a>
 
     <div class="hero">
-      <h2 class="title">Withdraw EIA Draft 2020</h2>
+      <h2 class="title">EIA 2020 പിൻവലിക്കുക</h2>
       <h2 class="title shift clip">
         <span class="word-shift">
           <b class="is-visible">#NowOrNever</b>
@@ -59,7 +59,7 @@
           <b>#IndiaNotForSale</b>
         </span>
       </h2>
-      <button class="button modal-toggle">Raise your voice</button>
+      <button class="button modal-toggle">നമുക്ക് പ്രതികരിക്കാം</button>
     </div>
     
     
@@ -241,7 +241,7 @@
       mailLink.href = "mailto:"+recipients+"?cc="+cc+"&subject="+subject+"&body="+body.replace(/\n/g,"<br>");
       mailLink.click();
       setTimeout(()=>{
-        document.getElementById('opening').innerHTML = 'Congratulations! We hope you have sent the mail. Process competed.';
+        document.getElementById('opening').innerHTML = 'അഭിനന്ദനങ്ങൾ! താങ്കൾ മെയിൽ അയച്ചു എന്ന് പ്രതീക്ഷയ്ക്കുന്നു.';
       }, 3000)
     }
 
@@ -251,7 +251,7 @@
       var firstName = $("#firstName").val();
       var customMessage = $("#messageText").val();
       if (new Date() < new Date('2020-08-12')) {
-        $('.first-name').text("Thank you," + " " + firstName + "!");
+        $('.first-name').text("നന്ദി," + " " + firstName + "!");
         setTimeout(function() {
           openMail(firstName, customMessage);
         }, 1000);
