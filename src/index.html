@@ -272,6 +272,7 @@
       } else {
         $('.first-name').text("Sorry " + firstName + ", the time to respond is over!");
         activateLinks();
+        document.getElementById('opening').innerHTML = 'Try the following..';
       }
       fetch('https://withdraw-eia-2020.herokuapp.com/count_incr')
     });
