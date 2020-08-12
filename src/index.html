@@ -269,12 +269,12 @@
         setTimeout(function() {
           openMail(firstName, customMessage);
         }, 1000);
+        fetch('https://withdraw-eia-2020.herokuapp.com/count_incr')
       } else {
         $('.first-name').text("Sorry " + firstName + ", the time to respond is over!");
         activateLinks();
         document.getElementById('opening').innerHTML = 'Try the following..';
       }
-      fetch('https://withdraw-eia-2020.herokuapp.com/count_incr')
     });
 
     // Feather icons
